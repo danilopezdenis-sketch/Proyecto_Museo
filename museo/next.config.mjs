@@ -1,13 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   turbopack: {},
-  serverExternalPackages: ['sequelize', 'mongoose'],
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      config.externals.push('mysql2')
-    }
-    return config
-  },
+  serverExternalPackages: ['sequelize', 'mysql2', 'mongoose', 'mysql2/promise'],
 }
 
 export default nextConfig
