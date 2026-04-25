@@ -26,17 +26,17 @@ Las funcionalidades principales son:
 
 ###### **Diagrama ER** 
 
-### 
 
-### 
+<img width="867" height="435" alt="image" src="https://github.com/user-attachments/assets/eb45c9fb-f89a-4d5f-9313-ffa683137877" />
 
-### 
+
+ 
 
 ###### **Relaciones**
 
-* `obras.id\\\_artista` → `artistas.id` (N:1) — una obra tiene un artista, un artista puede tener muchas obras
-* `obras.id\\\_sala` → `salas.id` (N:1) — una obra está en una sala, una sala alberga muchas obras
-* `obras.id\\\_exposicion` → `exposiciones.id` (N:1) — una obra puede pertenecer a una exposición
+* `obras.id\\\_artista` -> `artistas.id` (N:1) - una obra tiene un artista, un artista puede tener muchas obras
+* `obras.id\\\_sala` -> `salas.id` (N:1) - una obra está en una sala, una sala alberga muchas obras
+* `obras.id\\\_exposicion` -> `exposiciones.id` (N:1) - una obra puede pertenecer a una exposición
 
 
 
@@ -52,17 +52,27 @@ Las funcionalidades principales son:
 
 **MySQL --- artistas**
 
+<img width="656" height="280" alt="image" src="https://github.com/user-attachments/assets/b2d7483b-7987-4b58-b25a-faa6463b484f" />
 
 
 **MySQL --- salas**
 
+<img width="798" height="253" alt="image" src="https://github.com/user-attachments/assets/a64e3132-3bd6-4a80-b7fb-5f284982c3a3" />
 
 
 **MySQL --- exposiciones**
 
+<img width="807" height="252" alt="image" src="https://github.com/user-attachments/assets/87fc1c16-ffed-442c-9c58-1106d8018cd0" />
+
+
+**MySQL --- Obras**
+
+<img width="1125" height="457" alt="image" src="https://github.com/user-attachments/assets/bacaae79-4942-4595-a99c-2e21fdc1fc89" />
+
 
 
 **MongoDB --- eventos**
+<img width="1219" height="224" alt="image" src="https://github.com/user-attachments/assets/4ad5b5a6-7171-4811-bc10-2b510d536909" />
 
 
 
@@ -78,7 +88,7 @@ Las funcionalidades principales son:
 
 ###### 
 
-###### 
+
 
 ###### **Listado de rutas**
 
