@@ -13,24 +13,28 @@ export async function getEventos(filtros = {}) {
 }
 
 export async function createEvento(formData) {
-  await connectMongo()
-  let metadatos = {}
-  const metadatosRaw = formData.get('metadatos')
-  if (metadatosRaw) { try { metadatos = JSON.parse(metadatosRaw) } catch {} }
-  const data = {
-    id_obra_mysql: Number(formData.get('id_obra_mysql')),
-    tipo_evento:   formData.get('tipo_evento'),
-    responsable:   formData.get('responsable'),
-    descripcion:   formData.get('descripcion'),
-    fecha:         formData.get('fecha') || new Date(),
-    metadatos,
+  try {
+    await connectMongo()
+    let metadatos = {}
+    const metadatosRaw = formData.get('metadatos')
+    if (metadatosRaw) { try { metadatos = JSON.parse(metadatosRaw) } catch {} }
+    const data = {
+      id_obra_mysql: Number(formData.get('id_obra_mysql')),
+      tipo_evento:   formData.get('tipo_evento'),
+      responsable:   formData.get('responsable'),
+      descripcion:   formData.get('descripcion'),
+      fecha:         formData.get('fecha') || new Date(),
+      metadatos,
+    }
+    if (!data.id_obra_mysql || !data.tipo_evento || !data.responsable || !data.descripcion)
+      throw new Error('Todos los campos son obligatorios')
+    await Evento.create(data)
+    revalidatePath('/historial')
+  } catch (e) {
+    console.error('ERROR createEvento:', e)
+    throw e
   }
-  if (!data.id_obra_mysql || !data.tipo_evento || !data.responsable || !data.descripcion)
-    throw new Error('Todos los campos son obligatorios')
-  await Evento.create(data)
-  revalidatePath('/historial')
 }
-
 export async function updateEvento(id, formData) {
   await connectMongo()
   const evento = await Evento.findById(id)
