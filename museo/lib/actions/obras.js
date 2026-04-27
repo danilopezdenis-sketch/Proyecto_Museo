@@ -62,6 +62,7 @@ export async function updateObra(id, formData) {
   const obra = await Obra.findByPk(id)
   if (!obra) throw new Error('Obra no encontrada')
   await obra.update({
+    imagen_url: formData.get('imagen_url') || null,
     titulo:            formData.get('titulo'),
     id_artista:        formData.get('id_artista'),
     id_sala:           formData.get('id_sala')           || null,
