@@ -34,6 +34,8 @@ export async function createArtista(formData) {
   await Artista.create(data)
   revalidatePath('/artistas')
   revalidatePath('/')
+  revalidatePath('/obras/nueva')
+
 }
 
 export async function updateArtista(id, formData) {
@@ -49,6 +51,8 @@ export async function updateArtista(id, formData) {
   revalidatePath('/artistas')
   revalidatePath(`/artistas/${id}`)
   revalidatePath('/')
+  revalidatePath('/obras/nueva')
+
 }
 
 export async function deleteArtista(id) {
@@ -57,4 +61,6 @@ export async function deleteArtista(id) {
   await artista.destroy()
   revalidatePath('/artistas')
   revalidatePath('/')
+  revalidatePath('/obras/nueva')
+
 }
