@@ -18,6 +18,7 @@ export async function createSala(formData) {
     estado:          formData.get('estado') || 'Abierta',
   })
   revalidatePath('/configuracion/salas')
+  revalidatePath('/')
 }
 
 export async function updateSala(id, formData) {
@@ -30,6 +31,7 @@ export async function updateSala(id, formData) {
     estado:          formData.get('estado'),
   })
   revalidatePath('/configuracion/salas')
+  revalidatePath('/')
 }
 
 export async function deleteSala(id) {
@@ -37,4 +39,5 @@ export async function deleteSala(id) {
   if (!sala) throw new Error('Sala no encontrada')
   await sala.destroy()
   revalidatePath('/configuracion/salas')
+  revalidatePath('/')
 }
