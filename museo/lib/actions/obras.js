@@ -55,6 +55,7 @@ export async function createObra(formData) {
   if (!data.titulo || !data.id_artista) throw new Error('Título y artista son obligatorios')
   await Obra.create(data)
   revalidatePath('/obras')
+  revalidatePath('/')
 }
 
 export async function updateObra(id, formData) {
@@ -74,6 +75,7 @@ export async function updateObra(id, formData) {
   })
   revalidatePath('/obras')
   revalidatePath(`/obras/${id}`)
+  revalidatePath('/')
 }
 
 export async function deleteObra(id) {
@@ -81,4 +83,5 @@ export async function deleteObra(id) {
   if (!obra) throw new Error('Obra no encontrada')
   await obra.destroy()
   revalidatePath('/obras')
+  revalidatePath('/')
 }
