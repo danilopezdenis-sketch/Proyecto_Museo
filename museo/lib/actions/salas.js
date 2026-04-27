@@ -35,7 +35,7 @@ export async function updateSala(id, formData) {
 }
 
 export async function deleteSala(id) {
-  const sala = await Sala.findByPk(id)
+  const sala = await Sala.findByPk(number(id))
   if (!sala) throw new Error('Sala no encontrada')
   await sala.destroy()
   revalidatePath('/configuracion/salas')
