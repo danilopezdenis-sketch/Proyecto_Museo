@@ -19,7 +19,8 @@ export async function createExposicion(formData) {
     estado:       formData.get('estado')       || 'Próxima',
   })
   revalidatePath('/configuracion/exposiciones')
-  revalidatePath('/')
+  revalidatePath('/', 'layout')
+  
 }
 
 export async function updateExposicion(id, formData) {
@@ -33,7 +34,7 @@ export async function updateExposicion(id, formData) {
     estado:       formData.get('estado'),
   })
   revalidatePath('/configuracion/exposiciones')
-  revalidatePath('/')
+  revalidatePath('/', 'layout')
 }
 
 export async function deleteExposicion(id) {
@@ -41,5 +42,5 @@ export async function deleteExposicion(id) {
   if (!exp) throw new Error('Exposición no encontrada')
   await exp.destroy()
   revalidatePath('/configuracion/exposiciones')
-  revalidatePath('/')
+  revalidatePath('/', 'layout')
 }
