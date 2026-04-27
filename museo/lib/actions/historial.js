@@ -30,7 +30,7 @@ export async function createEvento(formData) {
       throw new Error('Todos los campos son obligatorios')
     await Evento.create(data)
     revalidatePath('/historial')
-    revalidatePath('/')
+    revalidatePath('/','layout')
   } catch (e) {
     console.error('ERROR createEvento:', e)
     throw e
@@ -51,7 +51,7 @@ export async function updateEvento(id, formData) {
     metadatos,
   })
   revalidatePath('/historial')
-  revalidatePath('/')
+  revalidatePath('/','layout')
 }
 
 export async function deleteEvento(id) {
@@ -59,5 +59,5 @@ export async function deleteEvento(id) {
   const evento = await Evento.findByIdAndDelete(id)
   if (!evento) throw new Error('Evento no encontrado')
   revalidatePath('/historial')
-  revalidatePath('/')
+  revalidatePath('/','layout')
 }
