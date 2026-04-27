@@ -33,6 +33,7 @@ export async function createArtista(formData) {
     throw new Error('Nombre, nacionalidad y año de nacimiento son obligatorios')
   await Artista.create(data)
   revalidatePath('/artistas')
+  revalidatePath('/')
 }
 
 export async function updateArtista(id, formData) {
@@ -47,6 +48,7 @@ export async function updateArtista(id, formData) {
   })
   revalidatePath('/artistas')
   revalidatePath(`/artistas/${id}`)
+  revalidatePath('/')
 }
 
 export async function deleteArtista(id) {
@@ -54,4 +56,5 @@ export async function deleteArtista(id) {
   if (!artista) throw new Error('Artista no encontrado')
   await artista.destroy()
   revalidatePath('/artistas')
+  revalidatePath('/')
 }
